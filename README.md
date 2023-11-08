@@ -1,2 +1,2 @@
 # Softwaretechnik
-Softwaretechnik -  Das ist simpel und einprägsam und simpel vor allem
+Softwaretechnik -  Das ist simpel und einprägsam, vor allem simpel
