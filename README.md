@@ -2,5 +2,5 @@
 Softwaretechnik -  Das ist simpel und einprägsam, vor allem simpel
 
 
-#Abgabe
+# Abgabe
 Abgabe ist 15.1.2024
