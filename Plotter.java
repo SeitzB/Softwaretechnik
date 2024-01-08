@@ -2,7 +2,7 @@
 public class Plotter {
 	public Plotter(){
 		EV3LargeRegulatedMotor XYMotors[] = { new EV3LargeRegulatedMotor(MotorPort.A),
-				new EV3LargeRegulatedMotor(MotorPort.C) };
+		new EV3LargeRegulatedMotor(MotorPort.C) };
 		EV3ColorSensor colorSensor = new EV3ColorSensor(SensorPort.S1);
 		colorSensor.setFloodlight(true); // initialisierung Farbsensor
 		SensorMode redColorSensor = colorSensor.getRedMode();
