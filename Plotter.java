@@ -19,7 +19,14 @@ public class Plotter
 		SensorMode redColorSensor = colorSensor.getRedMode();
 		EV3TouchSensor touchSensor = new EV3TouchSensor(SensorPort.S2);
 		SensorMode touchSensorTouch = touchSensor.getTouchMode();
-		homing(XYMotors, redColorSensor, touchSensorTouch);
+		try
+		{
+			homing(XYMotors, redColorSensor, touchSensorTouch);
+		} catch (InterruptedException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void fahre(double streckeInMM, double zeit, EV3LargeRegulatedMotor m, Port port)
