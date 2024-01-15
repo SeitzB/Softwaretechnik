@@ -3,4 +3,4 @@ Softwaretechnik -  Das ist simpel und einprägsam, vor allem simpel
 
 
 # Abgabe
-Abgabe ist 15.1.2024
+Abgabe ist irgendwann anfang Februar
