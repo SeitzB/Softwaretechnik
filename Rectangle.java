@@ -1,4 +1,4 @@
-package Objects;
+
 
 class Rectangle extends Object
 {
