@@ -3,4 +3,4 @@ Softwaretechnik -  Das ist simpel und einprägsam, vor allem simpel
 
 
 # Abgabe
-Abgabe ist irgendwann anfang Februar
+Abgabe ist irgendwann Anfang Februar
