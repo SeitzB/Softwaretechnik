@@ -5,11 +5,11 @@ public class Printhead {
 
 	private boolean penUp;
 	private float coords[];
-	
+	EV3LargeRegulatedMotor Motor =  new EV3LargeRegulatedMotor(MotorPort.B);
 	public Printhead() {
 		setPenUp(true);
 		setCoords(new float[]{0, 0});
-		EV3LargeRegulatedMotor Motor =  new EV3LargeRegulatedMotor(MotorPort.B);
+		
 	
 	}
 	/**

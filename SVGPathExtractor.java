@@ -1,4 +1,4 @@
-package svgExtractionTest;
+
 
 import java.io.File;
 

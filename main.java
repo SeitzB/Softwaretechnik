@@ -1,16 +1,9 @@
 
 
-import lejos.hardware.motor.EV3LargeRegulatedMotor;
-import lejos.hardware.port.MotorPort;
-import lejos.hardware.port.Port;
-import lejos.hardware.port.SensorPort;
-import lejos.hardware.sensor.EV3ColorSensor;
-import lejos.hardware.sensor.EV3TouchSensor;
-import lejos.hardware.sensor.SensorMode;
 
 public class main{
 
-	public static void main(String[] args) throws InterruptedException
+	public static void main(String[] args)
 	{
 		
 		Plotter plotter = new Plotter();

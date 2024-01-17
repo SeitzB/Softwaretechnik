@@ -1,4 +1,4 @@
-package svgExtractionTest;
+
 
 public class pathReturn
 {
