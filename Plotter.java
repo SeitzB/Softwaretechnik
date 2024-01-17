@@ -10,26 +10,44 @@ import lejos.hardware.sensor.SensorMode;
 
 public class Plotter
 {
+	EV3LargeRegulatedMotor XYMotors[]= { new EV3LargeRegulatedMotor(MotorPort.A),
+			new EV3LargeRegulatedMotor(MotorPort.C) };
+	Coordinate coords; 
+	EV3ColorSensor colorSensor;
+	SensorMode redColorSensor;
+	EV3TouchSensor touchSensor;
+	SensorMode touchSensorTouch;
+	boolean initialised =false;
+	Printhead printhead=new Printhead();
 	public Plotter()
 	{
+			
+	}
+	
+	public void init() {
 		EV3LargeRegulatedMotor XYMotors[] = { new EV3LargeRegulatedMotor(MotorPort.A),
 				new EV3LargeRegulatedMotor(MotorPort.C) };
-		EV3ColorSensor colorSensor = new EV3ColorSensor(SensorPort.S1);
+		colorSensor = new EV3ColorSensor(SensorPort.S1);
 		colorSensor.setFloodlight(true); // initialisierung Farbsensor
-		SensorMode redColorSensor = colorSensor.getRedMode();
-		EV3TouchSensor touchSensor = new EV3TouchSensor(SensorPort.S2);
-		SensorMode touchSensorTouch = touchSensor.getTouchMode();
+		redColorSensor = colorSensor.getRedMode();
+		touchSensor	= new EV3TouchSensor(SensorPort.S2);
+		touchSensorTouch = touchSensor.getTouchMode();
 		try
 		{
-			homing(XYMotors, redColorSensor, touchSensorTouch);
+			homing();
 		} catch (InterruptedException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		initialised=true;
+	} 
+	
+	public void close() {
+		
 	}
 
-	public static void fahre(double streckeInMM, double zeit, EV3LargeRegulatedMotor m, Port port)
+	private static void fahre(double streckeInMM, double zeit, EV3LargeRegulatedMotor m, Port port)
 	{
 
 		double durchmesserReifen = 41;
@@ -57,16 +75,15 @@ public class Plotter
 		m.setSpeed((float) gradProSekunde);
 		m.rotate(((int) Math.round(gradMotor)));
 
-		m.close();
 	}
 
-	public static void fahre_mmSec(double streckeInMM, double mmSec, EV3LargeRegulatedMotor m, Port port)
+	private static void fahre_mmSec(double streckeInMM, double mmSec, EV3LargeRegulatedMotor m, Port port)
 	{
 		double zeit = streckeInMM / mmSec;
 		fahre(streckeInMM, zeit, m, port);
 	}
 
-	public static void hypo(final double x, final double y, double mmSec, final EV3LargeRegulatedMotor XYMotors[])
+	private static void hypo(final double x, final double y, double mmSec, final EV3LargeRegulatedMotor XYMotors[])
 			throws InterruptedException
 	{
 		double hypo = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
@@ -95,10 +112,15 @@ public class Plotter
 
 	}
 
-	public static boolean homing(final EV3LargeRegulatedMotor XYMotors[], final SensorMode redColorSensor,
-			final SensorMode touchSensorTouch) throws InterruptedException
+	/**
+	 * Method that zeros the position of the Plotter
+	 */
+	private boolean homing(
+			) throws InterruptedException
 	{
-
+		final EV3LargeRegulatedMotor XYMotors[] = this.XYMotors;
+		final SensorMode redColorSensor = this.redColorSensor;
+		final SensorMode touchSensorTouch = this.touchSensorTouch;
 		Thread colorSensing = new Thread(new Runnable()
 		{
 			@Override
@@ -121,6 +143,7 @@ public class Plotter
 					}
 				}
 				XYMotors[1].stop();
+				XYMotors[1].resetTachoCount();
 
 			}
 		});
@@ -146,14 +169,48 @@ public class Plotter
 					}
 				}
 				XYMotors[0].stop();
+				XYMotors[0].resetTachoCount();
 
 			}
 
 		});
 		touchSensing.start();
 		colorSensing.start();
-
+		coords=new Coordinate(0,0);
+		printhead.setCoords(new float[] {0,0});
 		return true;
+	}
+	/**
+	 * Draws a rectangle needs some work, but should be deprecated
+	 * @param coordinate 1
+	 * @param coordinate 2
+	 */
+	public void dRect(Coordinate c1, Coordinate c2) {
+		if(!initialised) {return;}
+	}
+	/**
+	 * Draws all kinds of Paths TODO needs Parameters and Code
+	 */
+	public void dPath() {
+		if(!initialised) {return;}
+	}
+	/**
+	 * Draws a hypotenuse with xy coords and speed, does this relative always ONLY USE for Testing TODO should be private also
+	 * @param x
+	 * @param y
+	 * @param mmSec
+	 */
+	public void dHypo(double x, double y, double mmSec) {
+		if(!initialised) {return;}
+		try {
+			this.hypo(x, y, mmSec, XYMotors);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	private void logCoords() {
+		
 	}
 
 }

@@ -12,10 +12,10 @@ public class main{
 
 	public static void main(String[] args) throws InterruptedException
 	{
-		EV3LargeRegulatedMotor XYMotors[] = { new EV3LargeRegulatedMotor(MotorPort.A),
-				new EV3LargeRegulatedMotor(MotorPort.C) };
+		
 		Plotter plotter = new Plotter();
-		plotter.hypo(-100, 20, 50, XYMotors);
+		plotter.init();
+		plotter.dHypo(-100, 20, 50);
 		
 	}
 
