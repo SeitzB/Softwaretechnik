@@ -16,7 +16,7 @@ public class SVGPathExtractor
 	{
 		try
 		{
-			String svgFilePath = "Zeichnung.svg"; // Replace with the actual path to your SVG file
+			String svgFilePath = "Zeichnung.svg"; 
 			File svgFile = new File(svgFilePath);
 
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
