@@ -1,0 +1,20 @@
+MOTOREN
+
+X - Kettenmotor
+Y - Papiereinzug
+Z - binäre Stiftachse
+
+PORT    ACHSE
+ A        X
+ B        Z
+ C        Y
+ D     notInUse
+
+
+SENSOREN
+
+PORT    Sensortyp
+ 1        Farbe
+ 2        Touch
+ 3       notInUse
+ 4       notInUse
