@@ -1,5 +1,4 @@
 
-
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
@@ -10,26 +9,28 @@ import lejos.hardware.sensor.SensorMode;
 
 public class Plotter
 {
-	EV3LargeRegulatedMotor XYMotors[]= { new EV3LargeRegulatedMotor(MotorPort.A),
+	EV3LargeRegulatedMotor XYMotors[] = { new EV3LargeRegulatedMotor(MotorPort.D),
 			new EV3LargeRegulatedMotor(MotorPort.C) };
-	Coordinate coords; 
+	Coordinate coords;
 	EV3ColorSensor colorSensor;
 	SensorMode redColorSensor;
 	EV3TouchSensor touchSensor;
 	SensorMode touchSensorTouch;
-	boolean initialised =false;
-	Printhead printhead=new Printhead();
+	boolean initialised = false;
+	Printhead printhead = new Printhead();
+
 	public Plotter()
 	{
-			
+
 	}
-	
-	public void init() {
-		
+
+	public void init()
+	{
+
 		colorSensor = new EV3ColorSensor(SensorPort.S1);
 		colorSensor.setFloodlight(true); // initialisierung Farbsensor
 		redColorSensor = colorSensor.getRedMode();
-		touchSensor	= new EV3TouchSensor(SensorPort.S2);
+		touchSensor = new EV3TouchSensor(SensorPort.S2);
 		touchSensorTouch = touchSensor.getTouchMode();
 		try
 		{
@@ -39,13 +40,14 @@ public class Plotter
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		initialised=true;
-	} 
-	
-	public void close() {
+		initialised = true;
+	}
+
+	public void close()
+	{
 		XYMotors[0].close();
 		XYMotors[1].close();
-		
+
 	}
 
 	private static void fahre(double streckeInMM, double zeit, EV3LargeRegulatedMotor m, Port port)
@@ -116,8 +118,7 @@ public class Plotter
 	/**
 	 * Method that zeros the position of the Plotter
 	 */
-	private boolean homing(
-			) throws InterruptedException
+	private boolean homing() throws InterruptedException
 	{
 		final EV3LargeRegulatedMotor XYMotors[] = this.XYMotors;
 		final SensorMode redColorSensor = this.redColorSensor;
@@ -177,41 +178,63 @@ public class Plotter
 		});
 		touchSensing.start();
 		colorSensing.start();
-		coords=new Coordinate(0,0);
-		printhead.setCoords(new float[] {0,0});
+		coords = new Coordinate(0, 0);
+		printhead.setCoords(new float[] { 0, 0 });
 		return true;
 	}
+
 	/**
 	 * Draws a rectangle needs some work, but should be deprecated
+	 * 
 	 * @param coordinate 1
 	 * @param coordinate 2
 	 */
-	public void dRect(Coordinate c1, Coordinate c2) {
-		if(!initialised) {return;}
+	public void dRect(Coordinate c1, Coordinate c2)
+	{
+		if (!initialised)
+		{
+			return;
+		}
 	}
+
 	/**
 	 * Draws all kinds of Paths TODO needs Parameters and Code
 	 */
-	public void dPath() {
-		if(!initialised) {return;}
+	public void dPath()
+	{
+		if (!initialised)
+		{
+			return;
+		}
 	}
+
 	/**
-	 * Draws a hypotenuse with xy coords and speed, does this relative always ONLY USE for Testing TODO should be private also
+	 * Draws a hypotenuse with xy coords and speed, does this relative always ONLY
+	 * USE for Testing TODO should be private also
+	 * 
 	 * @param x
 	 * @param y
 	 * @param mmSec
 	 */
-	public void dHypo(double x, double y, double mmSec) {
-		if(!initialised) {return;}
-		try {
+	public void dHypo(double x, double y, double mmSec)
+	{
+		if (!initialised)
+		{
+			return;
+		}
+		try
+		{
 			this.hypo(x, y, mmSec, XYMotors);
-		} catch (InterruptedException e) {
+		} catch (InterruptedException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	private void logCoords() {
-		
+
+	private void logCoords()
+	{
+
 	}
 
 }

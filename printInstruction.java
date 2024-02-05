@@ -1,37 +1,30 @@
 
-
-public class printInstruction
-{
+public class printInstruction {
 	private float x;
 	private float y;
 	private boolean last;
 	private boolean print;
 
-	printInstruction(float x, float y, boolean print, boolean last)
-	{
+	printInstruction(float x, float y, boolean print, boolean last) {
 		this.x = x;
 		this.y = y;
 		this.last = last;
 		this.print = print;
 	}
 
-	public float giveX()
-	{
+	public float giveX() {
 		return x;
 	}
 
-	public float giveY()
-	{
+	public float giveY() {
 		return y;
 	}
 
-	public boolean givePos()
-	{
+	public boolean givePos() {
 		return last;
 	}
 
-	public boolean givePrint()
-	{
+	public boolean givePrint() {
 		return print;
 	}
 }

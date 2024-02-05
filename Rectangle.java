@@ -1,18 +1,14 @@
 
-
-class Rectangle extends Object
-{
+class Rectangle extends Object {
 	Coordinate startPoint;
 	float width;
 	float height;
 
-	Rectangle(Coordinate startPoint, float width, float height)
-	{
+	Rectangle(Coordinate startPoint, float width, float height) {
 		super(configureCoordinates(startPoint, width, height));
 	}
 
-	private static printInstruction[] configureCoordinates(Coordinate startPoint, float width, float height)
-	{
+	private static printInstruction[] configureCoordinates(Coordinate startPoint, float width, float height) {
 		printInstruction processedData[] = new printInstruction[5];
 
 		processedData[0] = new printInstruction(startPoint.giveX(), startPoint.giveY(), false, false);
