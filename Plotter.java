@@ -1,4 +1,5 @@
 
+import lejos.hardware.lcd.LCD;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
@@ -118,11 +119,16 @@ public class Plotter
 	/**
 	 * Method that zeros the position of the Plotter
 	 */
-	private boolean homing() throws InterruptedException
+	public boolean homing() throws InterruptedException
 	{
 		final EV3LargeRegulatedMotor XYMotors[] = this.XYMotors;
 		final SensorMode redColorSensor = this.redColorSensor;
 		final SensorMode touchSensorTouch = this.touchSensorTouch;
+
+		LCD.clear();
+		LCD.drawString("homing in progress", 0, 0);
+		LCD.refresh();
+
 		Thread colorSensing = new Thread(new Runnable()
 		{
 			@Override

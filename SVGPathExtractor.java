@@ -69,7 +69,7 @@ public class SVGPathExtractor
 				pathReturn output = pathInit(pos, data);
 				pos = output.getPos();
 				Coordinates.add(output.getCoordinate());
-				mode = 'm';
+				mode = 'l';
 				break;
 			}
 
@@ -79,7 +79,7 @@ public class SVGPathExtractor
 				pathReturn output = pathInit(pos, data);
 				pos = output.getPos();
 				Coordinates.add(output.getCoordinate());
-				mode = 'm';
+				mode = 'L';
 				break;
 			}
 

@@ -1,10 +1,8 @@
-
 public class main
 {
 
 	public static void main(String[] args)
 	{
-
 		Plotter plotter = new Plotter();
 		plotter.init();
 		plotter.dHypo(-100, 200, 50);
